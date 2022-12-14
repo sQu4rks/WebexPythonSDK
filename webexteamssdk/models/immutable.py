@@ -64,6 +64,7 @@ from .mixins.recording import RecordingBasicPropertiesMixin
 from .mixins.meetings import MeetingBasicPropertiesMixin
 from .mixins.meeting_templates import MeetingTemplateBasicPropertiesMixin
 from .mixins.meeting_invitees import MeetingInviteeBasicPropertiesMixin
+from .mixins.meeting_participants import MeetingParticipantsBasicPropertiesMixin
 
 class ImmutableData(object):
     """Model a Webex Teams JSON object as an immutable native Python object."""
@@ -285,6 +286,9 @@ class MeetingTemplate(ImmutableData, MeetingTemplateBasicPropertiesMixin):
 class MeetingInvitees(ImmutableData, MeetingInviteeBasicPropertiesMixin):
     """Webex MeetingInvitees data model"""
 
+class MeetingParticipant(ImmutableData, MeetingParticipantsBasicPropertiesMixin):
+    """Webex MeetingParticipants data model"""
+
 immutable_data_models = defaultdict(
     lambda: ImmutableData,
     access_token=AccessToken,
@@ -307,7 +311,8 @@ immutable_data_models = defaultdict(
     recording=Recording,
     meeting=Meeting,
     meetingTemplate=MeetingTemplate,
-    meetingInvitee=MeetingInvitees
+    meetingInvitee=MeetingInvitees,
+    meetingParticipant=MeetingParticipant
 )
 
 

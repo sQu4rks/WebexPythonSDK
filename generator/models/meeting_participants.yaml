@@ -1,0 +1,88 @@
+name: MeetingParticipant
+endpoint: meetingParticipants
+object_type: meetingParticipant
+methods:
+  - list
+  - update
+query_parameters:
+  - name: meetingId
+    description: The unique identifier for the meeting. Please note that currently meeting ID of a scheduled personal room meeting is not supported for this API.
+    optional: False
+    type: basestring
+  - name: max
+    description: Limit the maximum number of participants in the response, up to 100. Default 10.
+    optional: True
+    type: int
+  - name: hostEmail
+    description: Email address for the meeting host. This parameter is only used if the user or application calling the API has the admin-level scopes. 
+    optional: True
+    type: basestring
+  - name: joinTimeFrom
+    description: The time participants join a meeting starts from the specified date and time (inclusive) in any ISO 8601 compliant format.
+    optional: True
+    type: basestring
+  - name: joinTimeTo
+    description: The time participants join a meeting before the specified date and time (exclusive) in any ISO 8601 compliant format.
+    optional: True
+    type: basestring
+create:
+  properties:
+update:
+  properties:
+list:
+  properties:
+    - name: id
+      description: The participant id to uniquely identify the meeting and the participant.
+      type: basestring
+    - name: orgId
+      description: The id to identify the organization.
+      type: basestring
+    - name: host
+      description: Whether or not the participant is the host of the meeting.
+      type: bool 
+    - name: coHost
+      description: Whether or not the participant has host privilege in the meeting.
+      type: bool
+    - name: spaceModerator
+      description: Whether or not the participant is the team space moderator. This field returns only if the meeting is associated with a Webex space.
+      type: bool
+    - name: email
+      description: The email address of the participant.
+      type: basestring
+    - name: displayName
+      description: The name of the participant.
+      type: basestring
+    - name: invitee
+      description: Whether or not the participant is invited to the meeting.
+      type: bool
+    - name: muted
+      description: Whether or not the participant's audio is muted.
+      type: bool
+    - name: video
+      description: "The status of the participant's video. (Values: on, off)"
+      type: basestring
+    - name: state
+      description: "The status of the participant in the meeting. (Values: lobby, end, joined)"
+      type: basestring
+    - name: joinedTime
+      description: The time the participant joined the meeting. If the field is non-existent or shows 1970-01-01T00:00:00.000Z the meeting may be still ongoing and the joinedTime will be filled in after the meeting ended.
+      type: basestring
+    - name: leftTime
+      description: The time the participant left the meeting. If the field is non-existent or shows 1970-01-01T00:00:00.000Z the meeting may be still ongoing and the leftTime will be filled in after the meeting ended.
+      type: basestring
+    - name: siteUrl
+      description: The site URL.
+      type: basestring
+    - name: meetingId
+      description: A unique identifier for the meeting which the participant belongs to.
+      type: basestring
+    - name: hostEmail
+      description: The email address of the host.
+      type: basestring
+    - name: devices
+      description: List of devices for this participant joined in the call.
+      type: list
+    - name: sourceId
+      description: The source ID of the participant.
+      type: basestring
+

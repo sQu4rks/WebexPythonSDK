@@ -52,6 +52,7 @@ from .webhooks import WebhooksAPI
 from .meetings import MeetingsAPI
 from .meeting_templates import MeetingTemplatesAPI
 from .meeting_invitees import MeetingInviteesAPI
+from .meeting_participants import MeetingParticipantAPI
 
 import os
 
@@ -225,6 +226,9 @@ class WebexTeamsAPI(object):
         self.meetings = MeetingsAPI(self._session, object_factory)
         self.meeting_templates = MeetingTemplatesAPI(self._session, object_factory)
         self.meeting_invitees = MeetingInviteesAPI(self._session, object_factory)
+        self.meeting_participants = MeetingParticipantAPI(self._session, object_factory)
+
+
     @property
     def access_token(self):
         """The access token used for API calls to the Webex Teams service."""
